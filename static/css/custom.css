@@ -1,3 +1,26 @@
-form {
+body {
+    font-family: Arial;
+    padding-top: 50px;
+    margin:0 20px;
+}
+
+footer {
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-top: 1px solid #ededed;
+    color: #A9A9A9;
+}
+
+.icon-bar {
+    background-color: #fff;
+}
+
+.accountform {
+    padding-top: 20px;
     width: 50%;
+}
+
+.product {
+    height: 200px;
 }
