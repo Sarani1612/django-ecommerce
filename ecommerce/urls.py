@@ -16,8 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from accounts import urls as urls_accounts
+from products import urls as urls_products
+from products.views import all_products
+from django.conf import settings
+from django.conf.urls.static import static
+# from .settings import MEDIA_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include(urls_accounts))
-]
+    path('', all_products, name="index"),
+    path('accounts/', include(urls_accounts)),
+    path('products/', include(urls_products))
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
