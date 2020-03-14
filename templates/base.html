@@ -7,8 +7,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>{% block page_title%}{% endblock%}</title>
+	<title>Ecommerce</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
 </head>
 
@@ -30,6 +31,14 @@
                 <a href="{% url 'registration' %}" class="nav-link">Register</a>
             </li>
             {% endif %}
+            <li class="nav-item">
+                <a href="{% url 'view_cart' %}" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                    {% if product_count > 0 %}
+                    <label class="badge badge-warning">{{ product_count }}</label>
+                    {% endif %}
+                </a>
+            </li>
 		</ul>
 	</nav>
 	<h1>{% block page_heading %}{% endblock %}</h1>
@@ -40,7 +49,12 @@
 		{% endfor %}
 	</div>
 	{% endif %}
-
+    <div class="display">
+        <form action="{% url 'search' %}" method="GET">
+            <input type="text" name="q">
+            <button type="submit">Search</button>
+        </form>
+    </div>
     {% block content%} {% endblock %}
 
     <!-- Scripts for Bootstrap -->
